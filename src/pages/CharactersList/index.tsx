@@ -35,6 +35,7 @@ interface Characters {
 
 interface RequestInfoPagination {
   total: number;
+  count: number;
 }
 
 export default function CharactersList() {
@@ -42,19 +43,15 @@ export default function CharactersList() {
   const [requestInfo, setRequestInfo] = useState<RequestInfoPagination>();
   const [hasSpinner, setHasSpinner] = useState(false);
   const [offset, setOffset] = useState(0);
-  const [nameStartsWith, setNameStartsWith] = useState();
+  const [nameStartsWith, setNameStartsWith] = useState('');
 
   useEffect(() => {
-    setHasSpinner(true);
-
-    const nameStartsWith = '';
-    if(window.location.search.indexOf('nameStartsWith') > -1){
-      setNameStartsWith(window.location.search.split('nameStartsWith=')[1]);
+    if(location.href.indexOf('nameStartsWith') > -1){
+      const nomeUrl = location.href.split('nameStartsWith=')[1]
+      setNameStartsWith(nomeUrl);
 
       console.log('>> nameStartsWith: ', nameStartsWith);
-    }
-         
-    if(nameStartsWith != ''){
+
       api.get(`https://gateway.marvel.com/v1/public/characters?nameStartsWith=${nameStartsWith}&limit=${LIMIT}&offset=${offset}&ts=1616179034&apikey=c22ba519d36ef5d64b7c341b94e6c7f9&hash=8a8b24fa59c32ba7bb0920b0c2721d86`).then((response) => {
         setRequestInfo(response.data.data);
         setCharacters(response.data.data.results);
