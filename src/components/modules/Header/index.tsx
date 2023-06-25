@@ -1,59 +1,52 @@
-import React from 'react';
+import React, { useState, useRef } from 'react';
 import Link from 'next/link';
 import { Container, Content, Input, Button, Form } from './styles';
 
-export default class Header extends React.Component {
-  constructor(props) {
-    super(props);
+export default function Header() {
 
-    this.state = {
-      searchQuery: ""
-    }
-  }
+    const [updated, setUpdated] = useState('');
 
-  handleInputChanged(event) {
-    this.setState({
-      searchQuery: event.target.value
-    });
-  }
+    const handleClick = () => {
+      console.log('>> updated', updated);
 
-  handleButtonClicked() {
-    var searchQuery = this.state.searchQuery;
+      if(updated == ''){
+        alert('Ops, informe o nome de um personagem.');
+      }else{
+        location.href = "/?nameStartsWith="+updated;
+      }
+    };
 
-    console.log('>> searchQuery: ',searchQuery);
-    if(searchQuery == ''){
-      alert('Ops, informe o nome de um personagem.');
-    }else{
-      location.href = "/?nameStartsWith="+searchQuery;
-    }
-
-  }
-  render() {
     return (
-    <Container>
-      <Content>
-        <div>
-          <h1>
-              <a href="/">MARVEL BOOK</a>
-          </h1>
-        </div>
+      <Container>
+        <Content>
+          <div>
+            <h1>
+                <a href="/">MARVEL BOOK</a>
+            </h1>
+          </div>
 
-        <Form>
-          <Input placeholder="Busque um personagem" type="text" value={this.state.searchQuery} onChange={this.handleInputChanged.bind(this)}/>
-          <Button onClick={this.handleButtonClicked.bind(this)}>
-            Buscar
-          </Button>
-        </Form>
-        
-        <nav>
-          <ul>
-            <li>
-              <a href="/">HOME</a>
-            </li>
-          </ul>
-        </nav>
-      </Content>
-    </Container>
+          <Form>
+            <Input 
+              placeholder="Busque um personagem" 
+              type="text" 
+              onChange={(input) => {
+                const updated = input?.target?.value;
+                setUpdated(updated);
+              }}
+            />
+            <Button onClick={handleClick}>
+              Buscar
+            </Button>
+          </Form>
+          
+          <nav>
+            <ul>
+              <li>
+                <a href="/">HOME</a>
+              </li>
+            </ul>
+          </nav>
+        </Content>
+      </Container>
   );
-  }
 }
