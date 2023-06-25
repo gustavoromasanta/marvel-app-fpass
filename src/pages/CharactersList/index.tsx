@@ -48,12 +48,11 @@ export default function CharactersList() {
     setHasSpinner(true);
 
     const nameStartsWith = window.location.search.split('nameStartsWith=')[1];
+    setNameStartsWith(nameStartsWith);
 
     console.log('>> nameStartsWith: ', nameStartsWith);
          
     if(nameStartsWith){
-      setNameStartsWith(nameStartsWith);
-
       api.get(`https://gateway.marvel.com/v1/public/characters?nameStartsWith=${nameStartsWith}&limit=${LIMIT}&offset=${offset}&ts=1616179034&apikey=c22ba519d36ef5d64b7c341b94e6c7f9&hash=8a8b24fa59c32ba7bb0920b0c2721d86`).then((response) => {
         setRequestInfo(response.data.data);
         setCharacters(response.data.data.results);
