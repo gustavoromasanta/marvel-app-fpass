@@ -90,7 +90,7 @@ export default function CharactersList() {
 
             {!nameStartsWith &&(
               <>
-                <SectionTitle title="CHARACTERS" />
+                <SectionTitle title="Personagens" />
               </>
             )}
             

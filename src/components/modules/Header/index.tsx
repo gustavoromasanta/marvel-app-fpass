@@ -21,7 +21,7 @@ export default function Header() {
         <Content>
           <div>
             <h1>
-                <a href="/">MARVEL BOOK</a>
+                <a href="/">MARVEL</a>
             </h1>
           </div>
 
@@ -42,7 +42,7 @@ export default function Header() {
           <nav>
             <ul>
               <li>
-                <a href="/">HOME</a>
+                <a href="/">INÍCIO</a>
               </li>
             </ul>
           </nav>

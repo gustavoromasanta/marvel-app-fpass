@@ -12,8 +12,8 @@ export default function Hero() {
       </Content>
 
       <Context>
-        <h2>MARVEL BOOK</h2>
-        <p>A place to meet your favorite characters</p>
+        <h2>MARVEL</h2>
+        <p>Conheça os personagens da Marvel</p>
       </Context>
     </Container>
   );
