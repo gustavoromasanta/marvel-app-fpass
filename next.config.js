@@ -4,5 +4,4 @@ module.exports = {
     PUBLIC_KEY: process.env.PUBLIC_KEY,
     MARVEL_API_KEY: process.env.MARVEL_API_KEY,
   },
-  distDir: 'build',
 };
