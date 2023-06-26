@@ -8,6 +8,7 @@
     "start": "next start"
   },
   "dependencies": {
+    "@typescript-eslint/parser": "^5.60.0",
     "axios": "^1.4.0",
     "next": "13.4.7",
     "react": "18.2.0",
